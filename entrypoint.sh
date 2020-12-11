@@ -20,7 +20,7 @@ echo 'sftp start'
 # create a temporary file containing sftp commands
 files=$5
 files=${files// / }    #这里是将var中的,替换为空格
-for element in $var 
+for element in $files
 do
     echo "put -r $5 $6" >> $TEMP_SFTP_FILE
 done
