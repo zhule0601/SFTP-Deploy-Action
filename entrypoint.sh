@@ -18,7 +18,13 @@ ssh -o StrictHostKeyChecking=no -p $3 -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2 mkdir 
 
 echo 'sftp start'
 # create a temporary file containing sftp commands
-printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
+files=$5
+files=${files// / }    #这里是将var中的,替换为空格
+for element in $var 
+do
+    echo "put -r $5 $6" >> $TEMP_SFTP_FILE
+done
+# printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
 #-o StrictHostKeyChecking=no avoid Host key verification failed.
 sftp -b $TEMP_SFTP_FILE -P $3 $7 -o StrictHostKeyChecking=no -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2
 
