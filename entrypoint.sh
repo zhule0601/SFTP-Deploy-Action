@@ -18,7 +18,8 @@ ssh -o StrictHostKeyChecking=no -p $3 -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2 mkdir 
 
 echo 'sftp start'
 # create a temporary file containing sftp commands
-files=$5
+echo $5
+files="$5"
 files=${files// / }    #这里是将var中的,替换为空格
 for element in $files
 do
