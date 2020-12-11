@@ -23,7 +23,7 @@ files="$5"
 files=${files// / }    #这里是将var中的,替换为空格
 for element in $files
 do
-    echo "put -r $5 $6" >> $TEMP_SFTP_FILE
+    echo "put -r $element $6" >> $TEMP_SFTP_FILE
 done
 # printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
 #-o StrictHostKeyChecking=no avoid Host key verification failed.
